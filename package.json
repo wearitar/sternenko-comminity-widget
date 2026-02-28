@@ -1,0 +1,25 @@
+{
+  "name": "sternenko-widget",
+  "version": "1.0.0",
+  "description": "Embeddable charity promotion widget for Sternenko Fund",
+  "main": "dist/sternenko-widget.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020",
+    "build:dev": "esbuild src/index.ts --bundle --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020",
+    "watch": "esbuild src/index.ts --bundle --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020 --watch",
+    "type-check": "tsc --noEmit",
+    "demo": "npx serve demo -p 3333"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0"
+  },
+  "keywords": [
+    "widget",
+    "charity",
+    "ukraine",
+    "donation"
+  ],
+  "license": "MIT"
+}

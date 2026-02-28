@@ -1,0 +1,67 @@
+import type { Language, Translation } from './types';
+
+export const translations: Record<Language, Translation> = {
+  eng: {
+    header: 'Stop the Drones Before They Strike.',
+    body: 'Every night, Russia attacks Ukraine with strike drones. They kill civilians and destroy cities. Interceptor drones make it possible to stop these attacks in the sky. Your donation will help the Ukrainian army shoot down enemy drones and save lives. Support the Armed Forces of Ukraine!',
+    supportAction: 'Details',
+    donateAction: 'Donate',
+    collapseAriaLabel: 'Collapse',
+    donateAriaLabel: 'Donate \u2014 opens in new tab',
+    widgetAriaLabel: 'Sternenko Fund donation widget',
+  },
+  ukr: {
+    header: 'Зупиніть дрони, перш ніж вони вдарять.',
+    body: '\u0429\u043E\u043D\u043E\u0447\u0456 \u0420\u043E\u0441\u0456\u044F \u0430\u0442\u0430\u043A\u0443\u0454 \u0423\u043A\u0440\u0430\u0457\u043D\u0443 \u0443\u0434\u0430\u0440\u043D\u0438\u043C\u0438 \u0434\u0440\u043E\u043D\u0430\u043C\u0438. \u0412\u043E\u043D\u0438 \u0432\u0431\u0438\u0432\u0430\u044E\u0442\u044C \u043C\u0438\u0440\u043D\u0438\u0445 \u043B\u044E\u0434\u0435\u0439 \u0456 \u0440\u0443\u0439\u043D\u0443\u044E\u0442\u044C \u043C\u0456\u0441\u0442\u0430. \u0414\u0440\u043E\u043D\u0438-\u043F\u0435\u0440\u0435\u0445\u043E\u043F\u043B\u044E\u0432\u0430\u0447\u0456 \u0434\u043E\u0437\u0432\u043E\u043B\u044F\u044E\u0442\u044C \u0437\u0443\u043F\u0438\u043D\u044F\u0442\u0438 \u0446\u0456 \u0430\u0442\u0430\u043A\u0438 \u0432 \u043D\u0435\u0431\u0456. \u0412\u0430\u0448 \u0434\u043E\u043D\u0430\u0442 \u0434\u043E\u043F\u043E\u043C\u043E\u0436\u0435 \u0443\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0456\u0439 \u0430\u0440\u043C\u0456\u0457 \u0437\u0431\u0438\u0432\u0430\u0442\u0438 \u0432\u043E\u0440\u043E\u0436\u0456 \u0434\u0440\u043E\u043D\u0438 \u0456 \u0440\u044F\u0442\u0443\u0432\u0430\u0442\u0438 \u0436\u0438\u0442\u0442\u044F. \u041F\u0456\u0434\u0442\u0440\u0438\u043C\u0430\u0439\u0442\u0435 \u0417\u0421\u0423!',
+    supportAction: 'Детальніше',
+    donateAction: '\u0417\u0430\u0434\u043E\u043D\u0430\u0442\u0438\u0442\u0438',
+    collapseAriaLabel: '\u0417\u0433\u043E\u0440\u043D\u0443\u0442\u0438',
+    donateAriaLabel: '\u0417\u0430\u0434\u043E\u043D\u0430\u0442\u0438\u0442\u0438 \u2014 \u0432\u0456\u0434\u043A\u0440\u0438\u0454\u0442\u044C\u0441\u044F \u0432 \u043D\u043E\u0432\u0456\u0439 \u0432\u043A\u043B\u0430\u0434\u0446\u0456',
+    widgetAriaLabel: '\u0412\u0456\u0434\u0436\u0435\u0442 \u043F\u043E\u0436\u0435\u0440\u0442\u0432 \u0444\u043E\u043D\u0434\u0443 \u0421\u0442\u0435\u0440\u043D\u0435\u043D\u043A\u0430',
+  },
+  de: {
+    header: 'Stoppt die Drohnen, bevor sie zuschlagen.',
+    body: 'Jede Nacht greift Russland die Ukraine mit Angriffsdrohnen an. Sie t\u00F6ten Zivilisten und zerst\u00F6ren St\u00E4dte. Abfangdrohnen erm\u00F6glichen es, diese Angriffe am Himmel zu stoppen. Ihre Spende hilft der ukrainischen Armee, feindliche Drohnen abzuschie\u00DFen und Leben zu retten. Unterst\u00FCtzen Sie die Streitkr\u00E4fte der Ukraine!',
+    supportAction: 'Details',
+    donateAction: 'Spenden',
+    collapseAriaLabel: 'Einklappen',
+    donateAriaLabel: 'Spenden \u2014 \u00F6ffnet in neuem Tab',
+    widgetAriaLabel: 'Sternenko-Fonds Spendenwidget',
+  },
+  fr: {
+    header: 'Arrêtez les drones avant qu\u2019ils ne frappent.',
+    body: "Chaque nuit, la Russie attaque l\u2019Ukraine avec des drones d\u2019attaque. Ils tuent des civils et d\u00E9truisent des villes. Les drones intercepteurs permettent d\u2019arr\u00EAter ces attaques dans le ciel. Votre don aidera l\u2019arm\u00E9e ukrainienne \u00E0 abattre les drones ennemis et \u00E0 sauver des vies. Soutenez les Forces arm\u00E9es ukrainiennes\u00A0!",
+    supportAction: 'Détails',
+    donateAction: 'Faire un don',
+    collapseAriaLabel: 'R\u00E9duire',
+    donateAriaLabel: 'Faire un don \u2014 ouvre dans un nouvel onglet',
+    widgetAriaLabel: 'Widget de don du Fonds Sternenko',
+  },
+  cs: {
+    header: 'Zastavte drony, než zaútočí.',
+    body: 'Ka\u017Edou noc Rusko \u00FAto\u010D\u00ED na Ukrajinu \u00FAdern\u00FDmi drony. Zab\u00EDjej\u00ED civilisty a ni\u010D\u00ED m\u011Bsta. Z\u00E1chytn\u00E9 drony umo\u017E\u0148uj\u00ED tyto \u00FAtoky zastavit na obloze. V\u00E1\u0161 dar pom\u016F\u017Ee ukrajinsk\u00E9 arm\u00E1d\u011B sest\u0159elovat nep\u0159\u00E1telsk\u00E9 drony a zachra\u0148ovat \u017Eivoty. Podpo\u0159te Ozbrojen\u00E9 s\u00EDly Ukrajiny!',
+    supportAction: 'Podrobnosti',
+    donateAction: 'Darovat',
+    collapseAriaLabel: 'Sbalit',
+    donateAriaLabel: 'Darovat \u2014 otev\u0159e se v nov\u00E9m panelu',
+    widgetAriaLabel: 'Widget pro dary fondu Sternenko',
+  },
+  pl: {
+    header: 'Zatrzymajcie drony, zanim uderzą.',
+    body: 'Ka\u017Cdej nocy Rosja atakuje Ukrain\u0119 dronami uderzeniowymi. Zabijaj\u0105 one cywil\u00F3w i niszcz\u0105 miasta. Drony przechwytuj\u0105ce pozwalaj\u0105 zatrzyma\u0107 te ataki na niebie. Twoja darowizna pomo\u017Ce ukrai\u0144skiej armii zestrzeliwa\u0107 wrogie drony i ratowa\u0107 \u017Cycie. Wesprzyj Si\u0142y Zbrojne Ukrainy!',
+    supportAction: 'Szczegóły',
+    donateAction: 'Wp\u0142aci\u0107 darowizn\u0119',
+    collapseAriaLabel: 'Zwi\u0144\u0105\u0107',
+    donateAriaLabel: 'Wp\u0142aci\u0107 darowizn\u0119 \u2014 otworzy si\u0119 w nowej karcie',
+    widgetAriaLabel: 'Widget darowizn funduszu Sternenka',
+  },
+};
+
+export const langToBcp47: Record<Language, string> = {
+  eng: 'en',
+  ukr: 'uk',
+  de: 'de',
+  fr: 'fr',
+  cs: 'cs',
+  pl: 'pl',
+};
