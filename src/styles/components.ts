@@ -137,4 +137,36 @@ export const componentStyles = `
   outline-offset: 0.125rem;
 }
 .donate-button:active { filter: brightness(0.88); }
+
+/* ---- CLOSE (DISMISS) CONTROL ---- */
+.dismiss-control {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--sw-surface);
+  color: var(--sw-text-secondary);
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 200ms ease, background 150ms ease, color 150ms ease;
+  padding: 0;
+  box-shadow: 0 0 0 1px var(--sw-border);
+  z-index: 1;
+}
+.dismiss-control svg { width: 0.5rem; height: 0.5rem; }
+.widget:hover .dismiss-control,
+.dismiss-control:focus-visible { opacity: 0.6; }
+.dismiss-control:hover { opacity: 1; background: var(--sw-hover-tint); color: var(--sw-text-primary); }
+.dismiss-control:focus-visible {
+  outline: 0.125rem solid var(--sw-focus-ring);
+  outline-offset: 0.125rem;
+  opacity: 1;
+}
+.dismiss-control:active { opacity: 1; background: var(--sw-active-tint); }
 `;

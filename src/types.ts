@@ -31,6 +31,7 @@ export interface Translation {
   supportAction: string;
   donateAction: string;
   collapseAriaLabel: string;
+  dismissAriaLabel: string;
   donateAriaLabel: string;
   widgetAriaLabel: string;
 }

@@ -5,11 +5,11 @@
   "main": "dist/sternenko-widget.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --minify --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020",
-    "build:dev": "esbuild src/index.ts --bundle --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020",
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020 && cp dist/sternenko-widget.js dist/sternenko-widget.js.map docs/",
+    "build:dev": "esbuild src/index.ts --bundle --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020 && cp dist/sternenko-widget.js dist/sternenko-widget.js.map docs/",
     "watch": "esbuild src/index.ts --bundle --sourcemap --outfile=dist/sternenko-widget.js --format=iife --target=es2020 --watch",
     "type-check": "tsc --noEmit",
-    "demo": "npx serve demo -p 3333"
+    "demo": "npx serve docs -p 3333"
   },
   "devDependencies": {
     "esbuild": "^0.20.0",

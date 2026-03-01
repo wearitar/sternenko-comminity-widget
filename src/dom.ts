@@ -1,6 +1,6 @@
 import type { Translation } from './types';
 import { LOGO_SVG } from './logo';
-import { ARROW_SVG, CHEVRON_SVG } from './icons';
+import { ARROW_SVG, CHEVRON_SVG, DISMISS_SVG } from './icons';
 import { DONATE_URL } from './constants';
 
 /** References to key DOM elements inside the widget */
@@ -10,6 +10,7 @@ export interface WidgetElements {
   widget: HTMLElement;
   supportBtn: HTMLButtonElement;
   collapseBtn: HTMLButtonElement;
+  dismissBtn: HTMLButtonElement;
   expandableRegion: HTMLElement;
 }
 
@@ -23,6 +24,7 @@ interface BuildDomOptions {
   onExpand: () => void;
   onCollapse: () => void;
   onDonate: () => void;
+  onDismiss: () => void;
 }
 
 /** Create the full widget DOM tree with Shadow DOM isolation */
@@ -50,7 +52,7 @@ export function buildWidgetDom(opts: BuildDomOptions): WidgetElements {
   widget.setAttribute('data-position', position);
 
   // Header row
-  const headerRow = buildHeaderRow(t, opts.onExpand, opts.onCollapse);
+  const headerRow = buildHeaderRow(t, opts.onExpand, opts.onCollapse, opts.onDismiss);
   widget.appendChild(headerRow.row);
 
   // Expandable region
@@ -67,6 +69,7 @@ export function buildWidgetDom(opts: BuildDomOptions): WidgetElements {
     widget,
     supportBtn: headerRow.supportBtn,
     collapseBtn: headerRow.collapseBtn,
+    dismissBtn: headerRow.dismissBtn,
     expandableRegion,
   };
 }
@@ -75,7 +78,8 @@ function buildHeaderRow(
   t: Translation,
   onExpand: () => void,
   onCollapse: () => void,
-): { row: HTMLElement; supportBtn: HTMLButtonElement; collapseBtn: HTMLButtonElement } {
+  onDismiss: () => void,
+): { row: HTMLElement; supportBtn: HTMLButtonElement; collapseBtn: HTMLButtonElement; dismissBtn: HTMLButtonElement } {
   const row = document.createElement('div');
   row.classList.add('header-row');
 
@@ -109,7 +113,15 @@ function buildHeaderRow(
   collapseBtn.addEventListener('click', onCollapse);
   row.appendChild(collapseBtn);
 
-  return { row, supportBtn, collapseBtn };
+  // Dismiss button
+  const dismissBtn = document.createElement('button');
+  dismissBtn.classList.add('dismiss-control');
+  dismissBtn.setAttribute('aria-label', t.dismissAriaLabel);
+  dismissBtn.innerHTML = DISMISS_SVG;
+  dismissBtn.addEventListener('click', onDismiss);
+  row.appendChild(dismissBtn);
+
+  return { row, supportBtn, collapseBtn, dismissBtn };
 }
 
 function buildHorizontalExpandable(t: Translation, onDonate: () => void): HTMLElement {

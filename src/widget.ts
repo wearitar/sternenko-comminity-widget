@@ -4,7 +4,7 @@ import { resolveConfig, resolveTheme } from './config';
 import { isVerticalPosition } from './position';
 import { buildStyles } from './styles/index';
 import { buildWidgetDom, type WidgetElements } from './dom';
-import { ANIMATION } from './constants';
+import { ANIMATION, DISMISS_STORAGE_KEY, DISMISS_TTL_MS } from './constants';
 
 export class SternenkoWidget {
   private config: SternenkoWidgetConfig;
@@ -27,6 +27,7 @@ export class SternenkoWidget {
 
   init(): void {
     if (this.els) return;
+    if (this.isDismissed()) return;
 
     const t = translations[this.config.lang];
     const isVertical = isVerticalPosition(this.config.position);
@@ -41,6 +42,7 @@ export class SternenkoWidget {
       onExpand: () => this.expand(),
       onCollapse: () => this.collapse(),
       onDonate: () => requestAnimationFrame(() => this.collapse()),
+      onDismiss: () => this.dismiss(),
     });
 
     // Escape key to collapse
@@ -111,6 +113,25 @@ export class SternenkoWidget {
     widget.removeAttribute('data-expanded');
 
     setTimeout(() => supportBtn.focus(), ANIMATION.collapseDuration + 10);
+  }
+
+  private isDismissed(): boolean {
+    try {
+      const raw = localStorage.getItem(DISMISS_STORAGE_KEY);
+      if (!raw) return false;
+      const timestamp = parseInt(raw, 10);
+      if (isNaN(timestamp)) return false;
+      return Date.now() - timestamp < DISMISS_TTL_MS;
+    } catch {
+      return false;
+    }
+  }
+
+  private dismiss(): void {
+    try {
+      localStorage.setItem(DISMISS_STORAGE_KEY, String(Date.now()));
+    } catch { /* storage unavailable */ }
+    this.destroy();
   }
 
   destroy(): void {

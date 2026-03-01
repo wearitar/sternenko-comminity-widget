@@ -20,3 +20,6 @@ export const ANIMATION = {
   supportFadeDuration: 150,
   hoverDuration: 150,
 } as const;
+
+export const DISMISS_STORAGE_KEY = 'sternenko-widget-dismissed';
+export const DISMISS_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours

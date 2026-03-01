@@ -48,6 +48,7 @@ export function buildContainerStyles(position: WidgetPosition): string {
 
   return `
 .widget {
+  position: relative;
   pointer-events: auto;
   font-family: 'FixelDisplay', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
