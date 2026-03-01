@@ -52,7 +52,7 @@ export function buildWidgetDom(opts: BuildDomOptions): WidgetElements {
   widget.setAttribute('data-position', position);
 
   // Header row
-  const headerRow = buildHeaderRow(t, opts.onExpand, opts.onCollapse, opts.onDismiss);
+  const headerRow = buildHeaderRow(t, opts.onExpand, opts.onCollapse);
   widget.appendChild(headerRow.row);
 
   // Expandable region
@@ -63,13 +63,17 @@ export function buildWidgetDom(opts: BuildDomOptions): WidgetElements {
 
   shadow.appendChild(widget);
 
+  // Dismiss button (outside .widget to avoid overflow clipping)
+  const dismissBtn = buildDismissButton(t, opts.onDismiss);
+  shadow.appendChild(dismissBtn);
+
   return {
     host,
     shadow,
     widget,
     supportBtn: headerRow.supportBtn,
     collapseBtn: headerRow.collapseBtn,
-    dismissBtn: headerRow.dismissBtn,
+    dismissBtn,
     expandableRegion,
   };
 }
@@ -78,8 +82,7 @@ function buildHeaderRow(
   t: Translation,
   onExpand: () => void,
   onCollapse: () => void,
-  onDismiss: () => void,
-): { row: HTMLElement; supportBtn: HTMLButtonElement; collapseBtn: HTMLButtonElement; dismissBtn: HTMLButtonElement } {
+): { row: HTMLElement; supportBtn: HTMLButtonElement; collapseBtn: HTMLButtonElement } {
   const row = document.createElement('div');
   row.classList.add('header-row');
 
@@ -113,15 +116,16 @@ function buildHeaderRow(
   collapseBtn.addEventListener('click', onCollapse);
   row.appendChild(collapseBtn);
 
-  // Dismiss button
-  const dismissBtn = document.createElement('button');
-  dismissBtn.classList.add('dismiss-control');
-  dismissBtn.setAttribute('aria-label', t.dismissAriaLabel);
-  dismissBtn.innerHTML = DISMISS_SVG;
-  dismissBtn.addEventListener('click', onDismiss);
-  row.appendChild(dismissBtn);
+  return { row, supportBtn, collapseBtn };
+}
 
-  return { row, supportBtn, collapseBtn, dismissBtn };
+function buildDismissButton(t: Translation, onDismiss: () => void): HTMLButtonElement {
+  const btn = document.createElement('button');
+  btn.classList.add('dismiss-control');
+  btn.setAttribute('aria-label', t.dismissAriaLabel);
+  btn.innerHTML = DISMISS_SVG;
+  btn.addEventListener('click', onDismiss);
+  return btn;
 }
 
 function buildHorizontalExpandable(t: Translation, onDonate: () => void): HTMLElement {

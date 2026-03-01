@@ -41,6 +41,13 @@ export function getChevronRotation(pos: WidgetPosition): number {
   return 90;
 }
 
+/** Dismiss button position — top-right for all except center-right (top-left) */
+export function getDismissPosition(pos: WidgetPosition): string {
+  const offset = '-0.375rem';
+  if (pos === 'center-right') return `top:${offset};left:${offset};`;
+  return `top:${offset};right:${offset};`;
+}
+
 export function getBorderRadius(pos: WidgetPosition): string {
   if (!isVerticalPosition(pos)) return '0.75rem';
   if (pos === 'center-left') return '0 0.75rem 0.75rem 0';

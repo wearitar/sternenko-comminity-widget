@@ -4,6 +4,7 @@ import {
   getEntranceTransforms,
   getChevronRotation,
   getBorderRadius,
+  getDismissPosition,
   isVerticalPosition,
 } from '../position';
 import { lightTokens, darkTokens } from './tokens';
@@ -48,7 +49,6 @@ export function buildContainerStyles(position: WidgetPosition): string {
 
   return `
 .widget {
-  position: relative;
   pointer-events: auto;
   font-family: 'FixelDisplay', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
@@ -193,4 +193,9 @@ export function buildVerticalStyles(position: WidgetPosition): string {
 }
 .expandable-region .separator { display: none; }
 `;
+}
+
+/** Position-specific dismiss button placement */
+export function buildDismissStyles(position: WidgetPosition): string {
+  return `.dismiss-control { ${getDismissPosition(position)} }`;
 }
